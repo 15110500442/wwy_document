@@ -2,7 +2,7 @@
 #配置python虚拟环境
 >（豆瓣源https://pypi.douban.com/simple/ ）
 #步骤1：pip安装virtualenv和virtualenvwrapper:
-```python
+```python 
 1.pip3 install virtualenv   
 2.pip3 install virtualenvwrapper
 ```
