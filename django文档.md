@@ -2,11 +2,11 @@
 #配置python虚拟环境
 >（豆瓣源https://pypi.douban.com/simple/ ）
 #步骤1：pip安装virtualenv和virtualenvwrapper:
-```python 
+```python  
 1.pip3 install virtualenv   
 2.pip3 install virtualenvwrapper
 ```
-##virtualenv的优点：
+##virtualenv的优点： 
 >1、使不同应用开发环境独立
 >2、环境升级不影响其他应用，也不会影响全局的python环境
 >3、它可以防止系统中出现包管理混乱和版本的冲突
