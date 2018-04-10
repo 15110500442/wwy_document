@@ -19,7 +19,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh 
 ```  
 ###步骤3：使我们的配置生效 source .zshrc   (或者 source .bashrc)
-#``Django开发进行时：``
+#``Django项目创建和应用：``
 ##步骤1：创建虚拟机环境 mkvirtualenv + 虚拟环境的名字
 ##步骤2：配置django开发环境：
 ```python
@@ -38,17 +38,18 @@ python manage.py startapp +应用名称
 >1、命令行 charm+项目名称
 >2、IDE 里面的open选项
 ##步骤6：在项目的setting设置里面有一个INSTALLED_APPS把我们的应用添加进去
-##步骤7：配置数据库（MySQL）
+#``创建模型和操作模型``
+##步骤1：配置数据库（MySQL）
 ```python
 import pymysql
 pymysql.install_as_MySQLdb()
 ```
-##步骤8：设置模型之后我们需要有两个步骤：
+##步骤2：设置模型之后我们需要有两个步骤：
 >1、生成迁移文件 python manage.py makemigrations
 >2、执行迁移（迁移生成表）python manage.py migrate
 
 ``注意``：
->pymysql 是Python2Python3通用
+>pymysql 是Python2和Python3通用
 >mysqldb Python3是不能够用
 >mysqlclient(推荐，后续我们会使用)
 
