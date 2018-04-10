@@ -53,7 +53,7 @@ python manage.py startapp +应用名称
 2、IDE 里面的open选项
 ```
 ## 步骤6：在项目的setting设置里面有一个INSTALLED_APPS把我们的应用添加进去
-# ``创建模型和操作模型``
+# ``Django模型：``
 ## 步骤1：配置数据库（MySQL）
 ```python
 # 在项目的__init__文件里面添加
@@ -68,12 +68,14 @@ DATABASES = {
         'NAME': 'test2',
         'USER': '用户名',
         'PASSWORD': '密码',
-        'HOST': '数据库服务器ip，本地可以使用localhost',
+        'HOST': '数据库服务器ip地址，本地可以使用localhost',
         'PORT': '端口，默认为3306',
     }
 }
 ```
-## 步骤3：设置模型之后我们需要有两个步骤：
+## 步骤3：创建模型
+
+## 步骤4：设置模型之后我们需要有两个步骤：
 ```
 # 生成迁移文件
 1、 python manage.py makemigrations
@@ -87,5 +89,6 @@ DATABASES = {
 * mysqlclient(推荐，后续我们会使用)
 
 > 参考连接 http://www.cnblogs.com/wt11/p/6141225.html
+
 
 
