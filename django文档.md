@@ -74,7 +74,20 @@ DATABASES = {
 }
 ```
 ## 步骤3：创建模型
+* 元选项
 
+```
+class HeroInfo(models.Model):
+    bname = models.CharField(max_length=20)
+    hgender = models.BooleanField(default=True)
+    isDelete = models.BooleanField(default=False)
+    hcontent = models.CharField(max_length=100)
+    hbook = models.ForeignKey('BookInfo')
+    
+    class Meta():
+        # 设置表名
+        db_table = 'Heroinfo'
+```
 ## 步骤4：设置模型之后我们需要有两个步骤：
 ```
 # 生成迁移文件
