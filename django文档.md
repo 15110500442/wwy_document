@@ -76,7 +76,7 @@ DATABASES = {
 ## 步骤3：创建模型
 * 元选项
 
-```
+```python
 class HeroInfo(models.Model):
     bname = models.CharField(max_length=20)
     hgender = models.BooleanField(default=True)
@@ -103,5 +103,5 @@ class HeroInfo(models.Model):
 
 > 参考连接 http://www.cnblogs.com/wt11/p/6141225.html
 
-
+## 步骤5：通过python manage.py shell 进行简单的交互测试（可省略）
 
