@@ -48,7 +48,7 @@ BookInfo.book.filter(bpub_date__gt = date(1980,1,1)).count()
 ```python
 BookInfo.book.exclude(id=3).count()
 ```
-## F对象
+## 8、F对象
 * 查询图书阅读量大于评论量的图书信息
 ```python
 BookInfo.book.filter(bread__gt = F('bcomment'))
@@ -57,7 +57,7 @@ BookInfo.book.filter(bread__gt = F('bcomment'))
 ```python
 BookInfo.book.filter(bread__gt = F('bcomment')*2)
 ```
-## Q对象
+## 9、Q对象
 * 查询id大于3``且``阅读量大于30的图书信息
 ```python
 # 方案1
@@ -76,7 +76,7 @@ BookInfo.book.filter(~Q(id=3))
 BookInfo.book.exclude(~Q(id=3)).values()
 ```
 
-## order_by
+## 10、order_by
 * 查询所有图书的信息，按照id``从小到大``进行排序。
 ```python
 BookInfo.book.all().order_by('id').values()
@@ -90,7 +90,7 @@ BookInfo.book.all().order_by('-id').values()
 BookInfo.book.filter(id__gt=3).order_by('-bread')
 ```
 
-## 聚合函数
+## 11、聚合函数
 * 查询所有图书的数目 select count(*) from booktest_bookinfo;
 ```python
 BookInfo.book.aggregate(Count('id'))
@@ -108,7 +108,7 @@ BookInfo.book.filter(id__gt=3).aggregate(Count('id'))
 BookInfo.book.all().order_by('-bread')[0]
 ```
 
-## 查询相关函数返回值总结
+## 12、查询相关函数返回值总结
 ```python
 get:返回一个对象
 all:QuerySet(也就是[])
@@ -119,7 +119,7 @@ aggregate:字典
 count:值
 ```
 
-## 通过对象执行关联查询
+## 13、通过对象执行关联查询
 * 查询图书id为1的所有英雄信息
 ```python
 b = BookInfo.book.get(id=1)
@@ -134,18 +134,18 @@ h.hbook_id
 
 >格式：
 1. 由一类的对象查询多类的时候：
-```python
+```text
 一类的对象.多类名小写_set.all() #查询所用数据
 ```
 2. 由多类的对象查询一类的时候：
-```python
+```text
 多类的对象.关联属性 #查询多类的对象对应的一类的对象
 ```
 3. 由多类的对象查询一类对象的id时候：
-```python
+```text
 多类的对象. 关联属性_id
 ```
-## 通过模型类事先关联查询
+## 14、通过模型类事先关联查询
 * 查询图书，要求图书中英雄的描述包含'八'。Join
 ```python
 BookInfo.objects.filter(heroinfo__hcomment__contains='八')
@@ -160,10 +160,10 @@ HeroInfo.objects.filter(hbook__btitle = '天龙八部')
 ```
 >格式
 1. 通过多类的条件查询一类的数据：
-```python
+```text
 一类名.objects.filter(多类名小写__多类属性名__条件名=值)
 ```
 2. 通过一类的条件查询多类的数据：
-```python
+```text
 多类名.objects.filter(关联属性__一类属性名__条件名=值)
 ```
