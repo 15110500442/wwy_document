@@ -10,7 +10,7 @@ python manage.py runserver
 ```python
 url(r'^second/',include('second.urls'))
 ```
-**注意**
+**注意** 
 ```text
 second后面的的反斜杠千万不要漏掉
 ```
