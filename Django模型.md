@@ -126,11 +126,44 @@ b = BookInfo.book.get(id=1)
 b.heroInfo_set.all()
 ```
 * 查询id为1的英雄所属图书信息
-```
-h = HeroInfo
+```python
+h = HeroInfo.objects.get(id=1)
+h.hbook
+h.hbook_id
 ```
 
 >格式：
-1. 由一类的对象查询多类的时候：一类的对象.多类名小写_set.all() #查询所用数据
-2. 由多类的对象查询一类的时候：多类的对象.关联属性 #查询多类的对象对应的一类的对象
-3. 由多类的对象查询一类对象的id时候：多类的对象. 关联属性_id
+1. 由一类的对象查询多类的时候：
+```python
+一类的对象.多类名小写_set.all() #查询所用数据
+```
+2. 由多类的对象查询一类的时候：
+```python
+多类的对象.关联属性 #查询多类的对象对应的一类的对象
+```
+3. 由多类的对象查询一类对象的id时候：
+```python
+多类的对象. 关联属性_id
+```
+## 通过模型类事先关联查询
+* 查询图书，要求图书中英雄的描述包含'八'。Join
+```python
+BookInfo.objects.filter(heroinfo__hcomment__contains='八')
+```
+* 查询图书，要求图书中的英雄的id大于3.
+```python
+BookInfo.objects.filter(heroinfo__id__gt=3)
+```
+* 查询书名为“天龙八部”的所有英雄。
+```python
+HeroInfo.objects.filter(hbook__btitle = '天龙八部')
+```
+>格式
+1. 通过多类的条件查询一类的数据：
+```python
+一类名.objects.filter(多类名小写__多类属性名__条件名=值)
+```
+2. 通过一类的条件查询多类的数据：
+```python
+多类名.objects.filter(关联属性__一类属性名__条件名=值)
+```
