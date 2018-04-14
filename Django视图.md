@@ -205,7 +205,7 @@ a:{% for item in a %}
 </html>
 ```
 # POST请求
-## 设计2个视图
+## 1.设计2个视图
 ```python
 def postTest1(request):
     return render(request, 'booktest/postTest1.html')
@@ -214,7 +214,7 @@ def postTest1(request):
 def postTest2(request):
     return render(request, 'booktest/postTest2.html')
 ```
-## 配置url(urls.py)
+## 2.配置url(urls.py)
 ```python
 urlpatterns = [
     url(r'^index/', views.index),
@@ -227,11 +227,18 @@ urlpatterns = [
     url(r'^postTest2/$',views.postTest2),
 ]
 ```
-## 添加html模板
+## 3.添加html模板
 1. postTest1.html
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POST2</title>
+</head>
+<body>
 {# action 为要请求的url#}
-<form method="post" action="/second/postTest1">
+<form method="post" action="/second/postTest2/">
     用户名：<input type="text" name="uname">
     <hr>
     密码：<input type="password" name="upwd">
@@ -239,6 +246,9 @@ urlpatterns = [
     性别:<input type="radio" name="ugender" value="男" checked="checked">男<input type="radio" name="ugender" value="女">女
     <hr>
     <input type="submit" value="提交">
+</form>
+</body>
+</html>
 ```
 2. postTest2.html
 ```html
@@ -251,6 +261,24 @@ urlpatterns = [
 <body>
 {# action 为要请求的url#}
 <form method="post" action="/second/postTest2"></form>
+用户名:{{ uname }}
+<hr>
+密码:{{ upwd }}
+<hr>
+性别:{{ ugender }}
 </body>
 </html>
+```
+## 4.注释csrf,在项目的settings里面
+```python
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+)
 ```
