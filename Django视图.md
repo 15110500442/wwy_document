@@ -11,7 +11,7 @@ python manage.py runserver
 ```python
 url(r'^second/',include('second.urls'))
 ```
-![TIM截图20180414183537](/assets/TIM截图20180414183537.png)
+
 **注意** 
 ```text
 second后面的的反斜杠千万不要漏掉
