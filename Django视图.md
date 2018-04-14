@@ -1,4 +1,3 @@
-# 视图——URL配置
 ## 步骤1：新建一个应用
 ```python
 python manage.py startapp second_app
@@ -24,8 +23,8 @@ from second import views
 
 urlpatterns = [
 
-    url(r'index', views.index),
-    url(r'(\d+)/', views.detail),
+    url(r'^index/', views.index),
+    url(r'^(\d+)/', views.detail),
 ]
 ```
 **views.py**
@@ -92,7 +91,7 @@ urlpatterns = [
     url(r'^index', views.index),
 ]
 ```
-## 2.修改应用views.py的视图函数index.py
+## 2.修改应用views.py的视图函数
 ```python
 def index(request):
     # request返回请求页面的完整路径
@@ -103,7 +102,9 @@ def index(request):
 http://127.0.0.1:8000/second/index
 ```
 # GET属性
-## 1.在应用的views.py里面的增加3个视图函数
+
+## 1.在应用templates里面创建一个目录，目录名为templates,添加3个html页面,分别为getTest1.html,getTest2.html,getTest3.html
+## 2.在应用的views.py里面的增加3个视图函数
 ```python
 # 展示接收的页面
 def getTest1(request):
@@ -115,7 +116,6 @@ def getTest2(request):
 def getTest3(request):
     return render(request,'booktest/getTest3.html')
 ```
-## 2.在应用templates里面创建一个目录，目录名为templates,添加3个html页面,分别为getTest1.html,getTest2.html,getTest3.html
 ## 3.在应用的urls.py里面添加
 ```python
     url(r'^index', views.index),
@@ -182,10 +182,25 @@ c:{{ c }}
 </html>
 ```
 ## 7.接收一键多值,在views.py模块里面
+* 在浏览器输入 http://127.0.0.1:8000/second/getTest3/?a=12&a=2&a=3 (其中a对应多个值)
 ```python
 def getTest3(request):
-    a1 = request.GET['a']
+    a1 = request.getlist('a')
     context={'a':a1}
     return render(request, 'booktest/getTest3.html',context)
 ```
 ## 8.在getTest3.html里面
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面3</title>
+</head>
+<body>
+a:{% for item in a %}
+{{ item }}
+{% endfor %}
+</body>
+</html>
+```
