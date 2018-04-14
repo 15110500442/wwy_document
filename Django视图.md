@@ -11,6 +11,7 @@ python manage.py runserver
 ```python
 url(r'^second/',include('second.urls'))
 ```
+![TIM截图20180414183537](/assets/TIM截图20180414183537.png)
 **注意** 
 ```text
 second后面的的反斜杠千万不要漏掉
@@ -133,10 +134,11 @@ def getTest3(request):
 <body>
 一键一值：<a href="/second/booktest/getTest2/?a=1&b=2&c=3">test2</a>
 <hr>
-一键多值：<a href="/second/booktest/getTest2/?a=1&b=2&c=3">test3</a>
+一键多值：<a href="/second/booktest/getTest3/?a=1&b=2&c=3">test3</a>
 </body>
 </html>
 ```
+
 ## 5.在views.py
 ```python
 # 展示接收的页面
@@ -161,7 +163,7 @@ def getTest2(request):
 def getTest3(request):
     return render(request, 'booktest/getTest3.html')
 ```
-# 在getTest2.html
+## 6.在getTest2.html
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -179,3 +181,11 @@ c:{{ c }}
 </body>
 </html>
 ```
+## 7.接收一键多值,在views.py模块里面
+```python
+def getTest3(request):
+    a1 = request.GET['a']
+    context={'a':a1}
+    return render(request, 'booktest/getTest3.html',context)
+```
+## 8.在getTest3.html里面
