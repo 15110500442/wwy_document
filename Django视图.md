@@ -204,3 +204,53 @@ a:{% for item in a %}
 </body>
 </html>
 ```
+# POST请求
+## 设计2个视图
+```python
+def postTest1(request):
+    return render(request, 'booktest/postTest1.html')
+
+
+def postTest2(request):
+    return render(request, 'booktest/postTest2.html')
+```
+## 配置url(urls.py)
+```python
+urlpatterns = [
+    url(r'^index/', views.index),
+    # url(r'^(\d+)/',views.detail)
+    url(r'(?P<num2>\d+)/(?P<num1>\d+)/(?P<num3>\d+)', views.detail2),
+    url(r'^getTest1/$',views.getTest1),
+    url(r'^getTest2/$',views.getTest2),
+    url(r'^getTest3/$',views.getTest3),
+    url(r'^postTest1/$',views.postTest1),
+    url(r'^postTest2/$',views.postTest2),
+]
+```
+## 添加html模板
+1. postTest1.html
+```html
+{# action 为要请求的url#}
+<form method="post" action="/second/postTest1">
+    用户名：<input type="text" name="uname">
+    <hr>
+    密码：<input type="password" name="upwd">
+    <hr>
+    性别:<input type="radio" name="ugender" value="男" checked="checked">男<input type="radio" name="ugender" value="女">女
+    <hr>
+    <input type="submit" value="提交">
+```
+2. postTest2.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POST2</title>
+</head>
+<body>
+{# action 为要请求的url#}
+<form method="post" action="/second/postTest2"></form>
+</body>
+</html>
+```
