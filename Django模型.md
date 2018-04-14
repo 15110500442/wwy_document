@@ -146,7 +146,7 @@ h.hbook_id
 多类的对象. 关联属性_id
 ```
 ## 14、通过模型类事先关联查询
-* 查询图书，要求图书中英雄的描述包含'八'。Join
+* 查询图书，要求图书中英雄的描述包含``'八'``。Join
 ```python
 BookInfo.objects.filter(heroinfo__hcomment__contains='八')
 ```
