@@ -2,6 +2,7 @@
 ```python
 python manage.py startapp second_app
 ```
+
 ## 步骤2：启动服务器（可选）
 ```python
 python manage.py runserver
