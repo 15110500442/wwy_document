@@ -2,7 +2,6 @@
 ```python
 python manage.py startapp + 应用名
 ```
-![TIM截图20180416155651](https://i.loli.net/2018/04/16/5ad4576839c7e.png)
 ## 步骤2：启动服务器（可选）
 ```python
 python manage.py runserver
