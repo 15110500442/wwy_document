@@ -19,6 +19,7 @@ url(r'^second/',include('second.urls'))
 second后面的的反斜杠千万不要漏掉
 ```
 ![05_项目的url模块](https://i.loli.net/2018/04/16/5ad46a55eff73.png)
+![06_url指向](https://i.loli.net/2018/04/16/5ad48b7d6d595.png)
 ## 步骤4：配置应用url
 **urls.py**
 ```python
@@ -31,6 +32,7 @@ urlpatterns = [
     url(r'^(\d+)/', views.detail),
 ]
 ```
+![08_配置url](https://i.loli.net/2018/04/16/5ad48c18ac67c.png)
 **views.py**
 ```python
 from django.shortcuts import render
@@ -44,6 +46,7 @@ def index(request):
 def detail(request, num):
     return HttpResponse(num)
 ```
+![07_定义视图](https://i.loli.net/2018/04/16/5ad48bc41887c.png)
 ## 步骤5：在浏览器输入网址
 ```python
 http://127.0.0.1:8000/second/index
@@ -53,6 +56,7 @@ http://127.0.0.1:8000/second/index
 def detail_two(request, num1, num2, num3):
     return HttpResponse('%s-%s-%s' % (num1, num2, num3))
 ```
+![12_带多个参数的视图函数](https://i.loli.net/2018/04/16/5ad48ca281101.png)
 ## 步骤7：在urls.py里面添加
 ```python
     # 把之前url注释了
@@ -60,11 +64,13 @@ def detail_two(request, num1, num2, num3):
     # url(r'^(\d+)/', views.detail),
     url(r'^(\d+)/(\d+)/(\d+)$', views.detail_two),
 ```
+![13_带多个参数的视图函数调用](https://i.loli.net/2018/04/16/5ad48cdeb3331.png)
 ## 步骤8：在urls.py里面添加
 ```python
 # 把其他url注释
 url(r'^(?P<num2>\d+)/(?P<num1>\d+)/(?P<num3>\d+)$', views.detail_two),
 ```
+![15_给指定参数添加值](https://i.loli.net/2018/04/16/5ad48d165b71d.png)
 # 定义视图
 ## 1.在项目settings里面,把debug改为Ture
 ```python
