@@ -51,6 +51,7 @@ def detail(request, num):
 ```python
 http://127.0.0.1:8000/second/index
 ```
+![09_浏览器输入](https://i.loli.net/2018/04/16/5ad4994cc73e7.png)
 ## 步骤6：在views.py里面添加
 ```python
 def detail_two(request, num1, num2, num3):
