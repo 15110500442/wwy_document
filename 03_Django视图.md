@@ -2,10 +2,14 @@
 ```python
 python manage.py startapp + 应用名
 ```
+![01_创建新项目](https://i.loli.net/2018/04/16/5ad45e1889022.png)6/5ad45e1889022.png)
+![02_创建新项目和应用](https://i.loli.net/2018/04/16/5ad45ea1d333e.png)6/5ad45ea1d333e.png)
+![03_目录结构](https://i.loli.net/2018/04/16/5ad469671efb9.png)
 ## 步骤2：启动服务器（可选）
 ```python
 python manage.py runserver
 ```
+![04_项目运行成功](https://i.loli.net/2018/04/16/5ad469b30fe2f.png)
 ## 步骤3：在项目的urls.py文件里面添加包含文件
 ```python
 url(r'^second/',include('second.urls'))
@@ -14,6 +18,7 @@ url(r'^second/',include('second.urls'))
 ```text
 second后面的的反斜杠千万不要漏掉
 ```
+![05_项目的url模块](https://i.loli.net/2018/04/16/5ad46a55eff73.png)
 ## 步骤4：配置应用url
 **urls.py**
 ```python
