@@ -1,8 +1,8 @@
 ## 步骤1：新建一个应用
 ```python
-python manage.py startapp second_app
+python manage.py startapp + 应用名
 ```
-
+![TIM截图20180416155651](https://i.loli.net/2018/04/16/5ad4576839c7e.png)
 ## 步骤2：启动服务器（可选）
 ```python
 python manage.py runserver
@@ -11,7 +11,6 @@ python manage.py runserver
 ```python
 url(r'^second/',include('second.urls'))
 ```
-
 **注意** 
 ```text
 second后面的的反斜杠千万不要漏掉
@@ -104,7 +103,7 @@ http://127.0.0.1:8000/second/index
 ```
 # GET属性
 
-## 1.在应用templates里面创建一个目录，目录名为templates,添加3个html页面,分别为getTest1.html,getTest2.html,getTest3.html
+## 1.在应用templates里面创建一个目录，目录名为booktest,添加3个html页面,分别为getTest1.html,getTest2.html,getTest3.html
 ## 2.在应用的views.py里面的增加3个视图函数
 ```python
 # 展示接收的页面
@@ -135,7 +134,7 @@ def getTest3(request):
 <body>
 一键一值：<a href="/second/booktest/getTest2/?a=1&b=2&c=3">test2</a>
 <hr>
-一键多值：<a href="/second/booktest/getTest3/?a=1&b=2&c=3">test3</a>
+一键多值：<a href="/second/booktest/getTest3/?a=1&a=2&a=3">test3</a>
 </body>
 </html>
 ```
@@ -186,7 +185,7 @@ c:{{ c }}
 * 在浏览器输入 http://127.0.0.1:8000/second/getTest3/?a=12&a=2&a=3 (其中a对应多个值)
 ```python
 def getTest3(request):
-    a1 = request.getlist('a')
+    a1 = request.GET.getlist('a')
     context={'a':a1}
     return render(request, 'booktest/getTest3.html',context)
 ```
