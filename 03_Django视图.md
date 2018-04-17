@@ -2,8 +2,8 @@
 ```python
 python manage.py startapp + 应用名
 ```
-![01_创建新项目](https://i.loli.net/2018/04/16/5ad45e1889022.png)6/5ad45e1889022.png)
-![02_创建新项目和应用](https://i.loli.net/2018/04/16/5ad45ea1d333e.png)6/5ad45ea1d333e.png)
+![01_创建新项目](https://i.loli.net/2018/04/16/5ad45e1889022.png)
+![02_创建新项目和应用](https://i.loli.net/2018/04/16/5ad45ea1d333e.png)
 ![03_目录结构](https://i.loli.net/2018/04/16/5ad469671efb9.png)
 ## 步骤2：启动服务器（可选）
 ```python
@@ -15,9 +15,8 @@ python manage.py runserver
 url(r'^second/',include('second.urls'))
 ```
 **注意** 
-```text
-second后面的的反斜杠千万不要漏掉
-```
+> second后面的的反斜杠千万不要漏掉
+
 ![05_项目的url模块](https://i.loli.net/2018/04/16/5ad46a55eff73.png)
 ![06_url指向](https://i.loli.net/2018/04/16/5ad48b7d6d595.png)
 ## 步骤4：配置应用url
@@ -267,16 +266,14 @@ urlpatterns = [
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>POST2</title>
+    <title>Title</title>
 </head>
 <body>
-{# action 为要请求的url#}
-<form method="post" action="/second/postTest2"></form>
-用户名:{{ uname }}
-<hr>
-密码:{{ upwd }}
-<hr>
-性别:{{ ugender }}
+<h1>postTest2</h1>
+<h1>恭喜你，注册成功</h1>
+用户名为:{{ a }}
+密码为:{{ b }}
+<h2>下次登录请以此账号登录</h2>
 </body>
 </html>
 ```
