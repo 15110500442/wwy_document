@@ -128,7 +128,7 @@ urlpatterns = [
 ]
 ```
 * 注意
-> **1**. 每一个URL都以url的形式写出来
+> **1**. 每一个URL都以url()的形式写出来
 > **2**. url函数放在urlpatterns列表里面
 > **3**. url函数有三个参数:URL(正则),对应方法，名称
 > **4**. 用正则表达式来约束我们的url
@@ -138,8 +138,8 @@ python manage.py runserver
 ```
 ## 十、Templates
 ###HTML文件：
-> 1. 使用了Django模板语言（Django Template Language,DTL)
-> 2. 也可以使用第三方的模板语言 Jinja2
+> 1. 使用了Django模板语言引擎（Django Template Language,DTL)
+> 2. 也可以使用第三方的模板语言引擎 Jinja2
 ###步骤：
 1. 在template目录下创建HTML文件（暂时取名index）
 2. 在views.py下返回一个render()
