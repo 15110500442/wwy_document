@@ -364,9 +364,73 @@ def article_page(request, article_id):
 </body>
 </html>
 ```
+**urls.py中：**
+```python
+from django.conf.urls import url
+from blog import views as blog_views
 
+urlpatterns = [
+    url(r'^index/', blog_views.index),
+    url(r'article/(?P<article_id>[0-9]+)$', blog_views.article_page)
+]
+```
+**注意**
+1. 参数写在响应函数中request后，可以有默认值
+2. URL正则表达式:**r'article/(?P<article_id>[0-9]+)$'**
+3. URL正则中的``组名必须和参数名一致``
 
+## Django模板中的超级链接配置
+> 超链接目标地址
+1. href后面是目标地址
+2. template中可以使用：url+命名空间名:链接名+参数
+即:
+```html
+{%url app_name:url_name param %}
+```
+**其中app_name和url_name都在url中配置**
 
+3. 再配url：
+> url函数的名称参数:(主要取决于**是否使用了include引用了另外一个url配置文件**)
+* 方案1：根据urls,写在``include()``的第二个参数位置,**namespace='blog'**
+* 方案2：应用下则写在``url()``的三个参数的位置,``name='article'``
+
+**根urls.py中:**
+```python
+from django.conf.urls import include, url
+from django.contrib import admin
+from blog import urls as blog_urls
+
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^blog/', include(blog_urls,namespace='blog'))
+]
+```
+**子urls.py中:**
+```python
+from django.conf.urls import url
+from blog import views as blog_views
+
+urlpatterns = [
+    url(r'^index/', blog_views.index),
+    url(r'article/(?P<article_id>[0-9]+)$', blog_views.article_page,name='article_page')
+]
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1><a href="#">新文章</a></h1>
+{% for article in articles_List %}
+    <a href="{% url 'blog:article_page' article.id %}">{{ article.title }}</a>
+    <br>
+{% endfor %}
+</body>
+</html>
+```
 
 
 
