@@ -431,7 +431,31 @@ urlpatterns = [
 </body>
 </html>
 ```
-
+## 十六、博客撰写页面
+###页面内容
+####标题编辑栏
+####文章内容编辑区域
+####提交按钮
+**创建一个编辑页面(edit_page.html)**
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑页面</title>
+</head>
+<body>
+<form action="#" method="post">
+    文章标题：
+    <input type="text" name="title">
+    <hr>
+    文章内容:
+    <input type="text" name="content">
+    <input type="submit">
+</form>
+</body>
+</html>
+```
 
 
 
