@@ -331,11 +331,40 @@ def index(request):
 
 **views.py中：**
 ```python
+from django.shortcuts import render
+from django.http import HttpResponse
+from blog import models
+
+
+# Create your views here.
+def index(request):
+    articles = models.Article.objects.all()
+    return render(request, 'index.html', {'articles_List': articles})
+
+
+def article_page(request, article_id):
+    article = models.Article.objects.get(pk=article_id)
+    return render(request, 'article_page.html', {'article': article})
 ```
 **创建一个HTML（article_page.html）**
-```python
-
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ article.title }}</h1>
+<br>
+<h3>{{ article.content }}</h3>
+<br>
+<br>
+<a href="">修改文章</a>
+</body>
+</html>
 ```
+
 
 
 
